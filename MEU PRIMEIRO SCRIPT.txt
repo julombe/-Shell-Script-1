@@ -1,0 +1,44 @@
+---Converter imagem do formato .jpg para .png---
+
+Utilizar o editor nano
+
+nano nome_de_um_arquivo.sh 
+
+nano conversao-jpg-png.sh
+
+1º O 1º script só realiza a conversão do arquivo amazon_aws.jpg para o arquivo amazon_aws.png. 
+
+#!/bin/bash
+
+convert ~/Downloads/imagens-livros/amazon_aws.jpg ~/Downloads/imagens-livros/amazon_aws.png
+
+
+2º O 2º script roda pegando o primeiro parâmetro ($1)
+
+#!/bin/bash
+
+convert ~/Downloads/imagens-livros/$1.jpg ~/Downloads/imagens-livros/$1.png
+
+3º O terceiro script roda pegando o segundo parâmetro e utilizando uma constante
+
+#!/bin/bash
+
+CAMINHO_IMAGENS=~/Downloads/imagens-livros
+
+convert $CAMINHO_IMAGENS/$1.jpg $CAMINHO_IMAGENS/$1.png
+convert $CAMINHO_IMAGENS/$2.jpg $CAMINHO_IMAGENS/$2.png
+
+
+4º O quarto script irá utilizar o @ para pegar todos os parâmetros independemente da quantidade. Utilizamos uma variável (imagem)
+
+
+#!/bin/bash
+
+CAMINHO_IMAGENS=~/Downloads/imagens-livros
+
+for imagem in $@
+do
+    convert $CAMINHO_IMAGENS/$imagem.jpg $CAMINHO_IMAGENS/$imagem.png
+done
+
+
